@@ -619,11 +619,11 @@ func TestAccContainerCluster_withIntraNodeVisibility(t *testing.T) {
 			{
 				Config: testAccContainerCluster_withIntraNodeVisibility(clusterName),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttr("google_container_cluster.with_intra_node_visibility", "enable_intra_node_visibility", "true"),
+					resource.TestCheckResourceAttr("google_container_cluster.with_intranode_visibility", "enable_intranode_visibility", "true"),
 				),
 			},
 			{
-				ResourceName:        "google_container_cluster.with_intra_node_visibility",
+				ResourceName:        "google_container_cluster.with_intranode_visibility",
 				ImportStateIdPrefix: "us-central1-a/",
 				ImportState:         true,
 				ImportStateVerify:   true,
@@ -631,11 +631,11 @@ func TestAccContainerCluster_withIntraNodeVisibility(t *testing.T) {
 			{
 				Config: testAccContainerCluster_updateIntraNodeVisibility(clusterName),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttr("google_container_cluster.with_intra_node_visibility", "enable_intra_node_visibility", "false"),
+					resource.TestCheckResourceAttr("google_container_cluster.with_intranode_visibility", "enable_intranode_visibility", "false"),
 				),
 			},
 			{
-				ResourceName:        "google_container_cluster.with_intra_node_visibility",
+				ResourceName:        "google_container_cluster.with_intranode_visibility",
 				ImportStateIdPrefix: "us-central1-a/",
 				ImportState:         true,
 				ImportStateVerify:   true,
@@ -688,11 +688,11 @@ func TestAccContainerCluster_withDefaultIntraNodeVisibility(t *testing.T) {
 			{
 				Config: testAccContainerCluster_defaultIntraNodeVisibility(acctest.RandString(10)),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttr("google_container_cluster.default_intra_node_visibility", "enable_intra_node_visibility", "false"),
+					resource.TestCheckResourceAttr("google_container_cluster.default_intranode_visibility", "enable_intranode_visibility", "false"),
 				),
 			},
 			{
-				ResourceName:        "google_container_cluster.default_intra_node_visibility",
+				ResourceName:        "google_container_cluster.default_intranode_visibility",
 				ImportStateIdPrefix: "us-central1-a/",
 				ImportState:         true,
 				ImportStateVerify:   true,
@@ -2271,7 +2271,7 @@ resource "google_container_cluster" "with_legacy_abac" {
 
 func testAccContainerCluster_defaultIntraNodeVisibility(clusterName string) string {
 	return fmt.Sprintf(`
-resource "google_container_cluster" "default_intra_node_visibility" {
+resource "google_container_cluster" "default_intranode_visibility" {
 	name = "cluster-test-%s"
 	zone = "us-central1-a"
 	initial_node_count = 1
@@ -2280,23 +2280,23 @@ resource "google_container_cluster" "default_intra_node_visibility" {
 
 func testAccContainerCluster_withIntraNodeVisibility(clusterName string) string {
 	return fmt.Sprintf(`
-resource "google_container_cluster" "with_intra_node_visibility" {
+resource "google_container_cluster" "with_intranode_visibility" {
 	name = "cluster-test-%s"
 	zone = "us-central1-a"
 	initial_node_count = 1
 
-	enable_intra_node_visibility = true
+	enable_intranode_visibility = true
 }`, clusterName)
 }
 
 func testAccContainerCluster_updateIntraNodeVisibility(clusterName string) string {
 	return fmt.Sprintf(`
-resource "google_container_cluster" "with_intra_node_visibility" {
+resource "google_container_cluster" "with_intranode_visibility" {
 	name = "cluster-test-%s"
 	zone = "us-central1-a"
 	initial_node_count = 1
 
-	enable_intra_node_visibility = false
+	enable_intranode_visibility = false
 }`, clusterName)
 }
 
