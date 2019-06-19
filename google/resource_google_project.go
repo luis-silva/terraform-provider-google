@@ -495,6 +495,7 @@ func updateProjectBillingAccount(d *schema.ResourceData, config *Config) error {
 		ba.BillingAccountName = "billingAccounts/" + name
 	}
 
+	log.Printf("[DEBUG]: Enabling cloud billing api for project: %q", pid)
 	// Ensure cloud billing api is enabled before attempting to update billing info
 	if err := enableService("cloudbilling.googleapis.com", pid, config); err != nil {
 		return fmt.Errorf("Error enabling cloud billing api for project %q: %v", prefixedProject(pid), err)
