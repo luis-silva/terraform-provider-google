@@ -83,7 +83,7 @@ The following arguments are supported:
    project to be migrated to the newly specified folder.
 
 * `billing_account` - (Optional) The alphanumeric ID of the billing account this project
-    belongs to. The user or service account performing this operation with Terraform
+    belongs to. This options also enables the cloud billing api for the project. The user or service account performing this operation with Terraform
     must have Billing Account Administrator privileges (`roles/billing.admin`) in
     the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
     for more details.
